@@ -1,5 +1,9 @@
 
 function reciever() { 
+	
+// Accesses information from html page. 
+// Begins other functions. 
+	
 	let numRows = (document.getElementById("rowNum").value); 
 	let numColumns = (document.getElementById("columnNum").value);
 	let numGenerations = (document.getElementById("generationNum").value);
@@ -14,6 +18,8 @@ function reciever() {
 }
 
 function createTable(rows, columns) {
+	
+//Creates new div and table according to user's dimensions. 
 
 	let newDiv = document.createElement("div")
 	newDiv.id = "divTable";
@@ -28,6 +34,8 @@ function createTable(rows, columns) {
 		let row = table.insertRow(0);
 		for (let j = columns - 1; j >= 0; j = j - 1){
 			 let cell = row.insertCell(0);
+			
+//Gives cell id as which line and column it is locted in. 
 			 cell.id = [i, j];
 			 cell.innerHTML = "";
 			 document.getElementById(cell.id).style.width = `${45/columns}vh`;
@@ -38,6 +46,8 @@ function createTable(rows, columns) {
 	}
 
 	let tableClick = document.getElementById("myTable");
+	
+// Directs to onclick function. 
 
 	for (let i = 0; i < tableClick.rows.length; i++) {
        		for (let j = 0; j < tableClick.rows[i].cells.length; j++)
@@ -49,6 +59,9 @@ function createTable(rows, columns) {
 }
 
 function createDummyTable() {
+	
+//Creates a non-visible dummy table. 
+//Serves as the last column to ensure the actual game of life runs smoothely, serves as a buffer zone. 
 
 	let newDiv = (document.getElementById("divTable"));
 
@@ -73,6 +86,9 @@ function createDummyTable() {
 }
 
 function execute(timeout) {
+	
+// Takes in an array of whether each cell should be alive or dead, and changes the table accordingly. 
+	
 	  setTimeout(() => {
 		let liveArray = findLive();
 		let totalArray = cellBorders();
@@ -90,6 +106,9 @@ function execute(timeout) {
 }
 
 function runGame() {
+	
+// Creates run button user clicks after choosing the squares in table. 
+// Directs code to run COnway's game of life. 
 
 	let numGenerations = (document.getElementById("generationNum").value);
 
@@ -101,6 +120,8 @@ function runGame() {
 	button.innerHTML = "Run";
 
 	newerDiv.appendChild(button);
+	
+// Sets time out so each change has visibl interval to be seen.
 
 	button.addEventListener ("click", function() {
 
@@ -118,7 +139,9 @@ function runGame() {
 
 function cellBorders() {
 
-
+// Checks how many live cells each cell in the table borders. 
+// Determines whether they be alive or not in the following round. 
+	
 	let numRows = (document.getElementById("rowNum").value); 
 	let numColumns = (document.getElementById("columnNum").value);
 	let numGenerations = (document.getElementById("generationNum").value);
@@ -192,7 +215,8 @@ function cellBorders() {
 
 function select(i, j) {
 
-
+// Changes cell colour after user clicks cell. 
+	
 	if (document.getElementById([i, j]).style.backgroundColor == "black") {
 	
 		document.getElementById([i, j]).style.backgroundColor = "white";
@@ -208,6 +232,9 @@ function select(i, j) {
 
 
 function findLive() {
+	
+// Produces an array of live cells for reference purposes. 
+	
 	let table = document.getElementById("myTable");
 	let liveArray = [];
 
