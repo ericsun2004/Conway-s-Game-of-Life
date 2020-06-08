@@ -1,0 +1,41 @@
+body{
+	background-image: url(background.jpg);
+    	background-position: fixed;
+    	background-size: cover;
+     	background-attachment: fixed;
+  	background-repeat: no-repeat; 
+    	width: 95%;
+    	height: 100%;
+}
+
+div {
+	width: 50%;
+	margin: auto;
+	margin-top: 30px;
+	background-color: white;
+
+	padding-top: 8px;
+	padding-bottom: 5px;
+
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+table {
+	border-collapse: collapse;
+	margin: auto;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+td {
+	height: 1.5vh;
+	width: 1.5vh;
+}
+
+p {
+	margin: 35px;
+	font-family: 'Roboto Mono', monospace;
+}
